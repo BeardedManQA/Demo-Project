@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Regression tests" thread-count="1" parallel="classes">
+    <test name="Deploy check">
+        <classes>
+            <class name="tests.LoginTest"></class>
+            <parameter name="browser" value="edge"></parameter>
+        </classes>
+    </test> <!-- Test -->
+</suite>

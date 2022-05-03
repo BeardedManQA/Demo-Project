@@ -3,22 +3,41 @@ package tests;
 import driverfactory.DriverFactory;
 import driverfactory.DriverManager;
 import driverfactory.DriverType;
+import lombok.extern.log4j.Log4j;
 import org.openqa.selenium.WebDriver;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.*;
+import utilities.TestListeners;
 
 import java.net.MalformedURLException;
 
+@Log4j
+
+@Listeners(TestListeners.class)
 public class BaseTest {
 
     WebDriver driver;
     DriverManager driverManager;
+    DriverType driverType;
 
     @BeforeMethod
-    public void run() throws MalformedURLException {
+    @Parameters({"browser"})
+    public void run(@Optional("chrome") String browser) throws MalformedURLException {
         DriverFactory factory = new DriverFactory();
-        driverManager = factory.getManager(DriverType.CHROME);
+        driverType = null;
+        if(browser.equals("chrome")) {
+            driverType = DriverType.CHROME;
+        } else if (browser.equals("firefox")) {
+            driverType = DriverType.FIREFOX;
+        } else if (browser.equals("edge")) {
+            driverType = DriverType.EDGE;
+        } else if (browser.equals("remote")) {
+            driverType = DriverType.REMOTE;
+        }
+        log.debug("driver type is defined");
+        driverManager = factory.getManager(driverType);
+        log.debug(driverType + " driver received");
         driverManager.createDriver();
+        log.debug("driver created");
         driver = driverManager.getDriver();
         driverManager.maximize();
         driverManager.setTimeout();
@@ -27,6 +46,11 @@ public class BaseTest {
     @AfterMethod
     public void quit() {
         driverManager.quitDriver();
+        log.debug("driver closed");
+    }
+
+    public WebDriver getDriver() {
+        return driver;
     }
 
 }
