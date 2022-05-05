@@ -1,13 +1,11 @@
 Checklist project:
 1. Login
 2. Package create
-3. Subscriber create + activation
+3. Subscriber create
 4. TV Channel create
 5. Movie create
 6. TV Series create
-7. Category sets create (TV, Movie, TV Show)
-8. TV Category create
-9. Movie category create
-10. TV Series category create
-11. Delete: Movie, Channel, TV Series, Subscriber, Package
-12. Logout
+7. TV category set create
+8. Movie category set create
+9. TV Series category set create
+10. Delete: Movie, Channel, TV Series, Subscriber, Package
