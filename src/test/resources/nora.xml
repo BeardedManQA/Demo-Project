@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Regression" thread-count="1" parallel="classes">
+    <test name="Deploy tests">
+        <classes>
+            <class name="tests.LoginTest"></class>
+            <class name="tests.PackageCreateTest"></class>
+            <class name="tests.SubscriberCreateTest"></class>
+            <class name="tests.TvCategorySetCreateTest"></class>
+            <class name="tests.MovieCategorySetCreateTest"></class>
+            <class name="tests.SeriesCategorySetCreateTest"></class>
+            <class name="tests.TvChannelCreateTest"></class>
+            <class name="tests.MovieCreateTest"></class>
+            <class name="tests.TvShowCreateTest"></class>
+            <class name="tests.DeletingContentTest"></class>
+            <parameter name="browser" value="chrome"></parameter>
+        </classes>
+    </test> <!-- Test -->
+</suite>
